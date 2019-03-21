@@ -6,9 +6,13 @@ import mxnet as mx
 from mxnet.contrib import onnx as onnx_mxnet
 import os
 
-image_folder = 'model'
+folder = 'model'
+if not os.path.exists(folder):
+    os.makedirs(folder)
+
+image_folder = 'data'
 if not os.path.exists(image_folder):
-	os.makedirs(image_folder)
+    os.makedirs(image_folder)
 
 # Step 1: Convert Chainer model to ONNX
 
@@ -35,3 +39,8 @@ mod.set_params(arg_params=arg_params, aux_params=aux_params, allow_missing=True,
 mod._symbol.save('model/vgg16-symbol.json')
 mod.save_params('model/vgg16-0000.params')
 
+# Download synset.txt that contain class labels
+mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/synset.txt', dirname='model')
+
+# Get a default image for inference
+mx.test_utils.download('https://s3.amazonaws.com/onnx-mxnet/examples/mallard_duck.jpg', dirname='data')
