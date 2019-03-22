@@ -43,4 +43,4 @@ mod.save_params('model/vgg16-0000.params')
 mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/synset.txt', dirname='model')
 
 # Get a default image for inference
-mx.test_utils.download('https://s3.amazonaws.com/onnx-mxnet/examples/mallard_duck.jpg', dirname='data')
+mx.test_utils.download('https://s3.amazonaws.com/onnx-mxnet/examples/Penguin.jpg', dirname='data')

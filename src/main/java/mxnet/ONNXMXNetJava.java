@@ -18,7 +18,7 @@ public class ONNXMXNetJava {
     @Option(name = "--model-path-prefix", usage = "input model directory and prefix of the model")
     private String modelPathPrefix = System.getProperty("user.dir") + "/model/vgg16";
     @Option(name = "--input-image", usage = "the input image")
-    private String inputImagePath = System.getProperty("user.dir") + "/data/mallard_duck.jpg";
+    private String inputImagePath = System.getProperty("user.dir") + "/data/Penguin.jpg";
 
     final static Logger logger = LoggerFactory.getLogger(ONNXMXNetJava.class);
 
