@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>mxnet</groupId>
@@ -14,6 +14,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <mxnet.scalaprofile>2.11</mxnet.scalaprofile>
+    <mxnet.version>[1.5.0-SNAPSHOT,)</mxnet.version>
+    <mxnet.hw_type>cpu</mxnet.hw_type>
   </properties>
 
   <repositories>
@@ -22,6 +25,32 @@
       <url>https://repository.apache.org/content/groups/snapshots</url>
     </repository>
   </repositories>
+
+  <profiles>
+    <profile>
+      <id>osx-x86_64</id>
+      <activation>
+        <os>
+          <family>mac</family>
+        </os>
+      </activation>
+      <properties>
+        <mxnet.profile>osx-x86_64-cpu</mxnet.profile>
+      </properties>
+    </profile>
+    <profile>
+      <id>linux-x86_64</id>
+      <activation>
+        <os>
+          <family>unix</family>
+          <name>Linux</name>
+        </os>
+      </activation>
+      <properties>
+        <mxnet.profile>linux-x86_64-${mxnet.hw_type}</mxnet.profile>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -32,8 +61,8 @@
     </dependency>
     <dependency>
       <groupId>org.apache.mxnet</groupId>
-      <artifactId>mxnet-full_2.11-osx-x86_64-cpu</artifactId>
-      <version>[1.5.0-SNAPSHOT, )</version>
+      <artifactId>mxnet-full_${mxnet.scalaprofile}-${mxnet.profile}</artifactId>
+      <version>${mxnet.version}</version>
     </dependency>
   </dependencies>
 
