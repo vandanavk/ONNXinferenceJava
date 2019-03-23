@@ -12,7 +12,7 @@
 
 3. Install dependencies
 
-`pip install mxnet==1.4.0.post0`
+`pip install mxnet`
 
 `pip install chainer==5.3.0`
 
@@ -41,3 +41,7 @@ Check data/ for
 5. Install the pre-requisites mentioned in here[https://github.com/apache/incubator-mxnet/blob/master/docs/tutorials/java/mxnet_java_on_intellij.md]
 
 6. Open ONNXInferenceJava in IntelliJ, build the project and run ONNXMXNetJava.java
+
+7. Deactivate conda environment
+
+`conda deactivate mxnet_blog`
