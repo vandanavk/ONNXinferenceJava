@@ -26,19 +26,11 @@
 
 `python chainer_onnx_mxnet.py`
 
-Check model/ for 
+Check model/ folder for `chainer_vgg16.onnx`, `vgg16-symbol.json`, `vgg16-0000.params`
 
-`chainer_vgg16.onnx`
+Check data/ folder for `Penguin.jpg`
 
-`vgg16-symbol.json`
-
-`vgg16-0000.params`
-
-Check data/ for
-
-`Penguin.jpg`
-
-5. Install the pre-requisites mentioned in here[https://github.com/apache/incubator-mxnet/blob/master/docs/tutorials/java/mxnet_java_on_intellij.md]
+5. Install the pre-requisites mentioned in [here](https://github.com/apache/incubator-mxnet/blob/master/docs/tutorials/java/mxnet_java_on_intellij.md)
 
 6. Open ONNXInferenceJava in IntelliJ, build the project and run ONNXMXNetJava.java
 
