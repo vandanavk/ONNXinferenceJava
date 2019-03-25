@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ONNXMXNetJava {
@@ -33,7 +34,7 @@ public class ONNXMXNetJava {
             System.exit(1);
         }
 
-        List<Context> inferenceContext = getContext();
+        List<Context> inferenceContext = Arrays.asList(Context.cpu());
 
         Shape inputShape = new Shape(new int[] {1, 3, 224, 224});
 
@@ -59,13 +60,6 @@ public class ONNXMXNetJava {
         }
     }
 
-
-    private static List<Context> getContext() {
-        List<Context> inferenceContext = new ArrayList<>();
-        inferenceContext.add(Context.cpu());
-
-        return inferenceContext;
-    }
 
     private static String printMaximumClass(float[] probabilities,
                                             String modelPathPrefix) throws IOException {
