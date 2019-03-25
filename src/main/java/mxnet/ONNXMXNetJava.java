@@ -33,14 +33,14 @@ public class ONNXMXNetJava {
             System.exit(1);
         }
 
-        List<Context> context = getContext();
+        List<Context> inferenceContext = getContext();
 
         Shape inputShape = new Shape(new int[] {1, 3, 224, 224});
 
         List<DataDesc> inputDescriptors = new ArrayList<>();
         inputDescriptors.add(new DataDesc("Input_0", inputShape, DType.Float32(), "NCHW"));
 
-        Predictor predictor = new Predictor(inst.modelPathPrefix, inputDescriptors, context, 0);
+        Predictor predictor = new Predictor(inst.modelPathPrefix, inputDescriptors, inferenceContext, 0);
 
         NDArray img = Image.imRead(inst.inputImagePath, 1, true);
         img = Image.imResize(img, 224, 224);
@@ -61,10 +61,10 @@ public class ONNXMXNetJava {
 
 
     private static List<Context> getContext() {
-        List<Context> ctx = new ArrayList<>();
-        ctx.add(Context.cpu());
+        List<Context> inferenceContext = new ArrayList<>();
+        inferenceContext.add(Context.cpu());
 
-        return ctx;
+        return inferenceContext;
     }
 
     private static String printMaximumClass(float[] probabilities,

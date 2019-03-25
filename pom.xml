@@ -12,8 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <mxnet.scalaprofile>2.11</mxnet.scalaprofile>
     <mxnet.version>[1.5.0-SNAPSHOT,)</mxnet.version>
     <mxnet.hw_type>cpu</mxnet.hw_type>
