@@ -2,6 +2,7 @@ package mxnet;
 
 import org.apache.mxnet.infer.javaapi.Predictor;
 import org.apache.mxnet.javaapi.*;
+import org.apache.mxnet.ResourceScope;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
@@ -12,7 +13,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 
@@ -44,19 +44,21 @@ public class ONNXMXNetJava {
 
         Predictor predictor = new Predictor(inst.modelPathPrefix, inputDescriptors, inferenceContext, 0);
 
-        NDArray img = Image.imRead(inst.inputImagePath, 1, true);
-        img = Image.imResize(img, 224, 224);
-        NDArray nd = img;
-        nd = NDArray.transpose(nd, new Shape(new int[]{2, 0, 1}), null)[0];
-        nd = NDArray.expand_dims(nd, 0, null)[0];
-        nd = nd.asType(DType.Float32());
-        List<NDArray> ndList = Collections.singletonList(nd);
-        List<NDArray> ndResult = predictor.predictWithNDArray(ndList);
-        try {
-            System.out.println("Prediction for " + inst.inputImagePath);
-            System.out.println(printMaximumClass(ndResult.get(0).toArray(), inst.modelPathPrefix));
-        } catch (IOException e) {
-            System.err.println(e);
+        try(ResourceScope scope = new ResourceScope()) {
+            NDArray img = Image.imRead(inst.inputImagePath, 1, true);
+            img = Image.imResize(img, 224, 224);
+            NDArray nd = img;
+            nd = NDArray.transpose(nd, new Shape(new int[]{2, 0, 1}), null)[0];
+            nd = NDArray.expand_dims(nd, 0, null)[0];
+            nd = nd.asType(DType.Float32());
+            List<NDArray> ndList = Collections.singletonList(nd);
+            List<NDArray> ndResult = predictor.predictWithNDArray(ndList);
+            try {
+                System.out.println("Prediction for " + inst.inputImagePath);
+                System.out.println(printMaximumClass(ndResult.get(0).toArray(), inst.modelPathPrefix));
+            } catch (IOException e) {
+                System.err.println(e);
+            }
         }
     }
 
