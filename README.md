@@ -2,7 +2,7 @@
 
 ### Recommended:
 * Use Python 3.5+ as onnx_chainer requires Python 3.5+
-* Use conda to create a virtual environment for Python
+* Use [conda](https://pypi.org/project/conda/) to create a virtual environment for Python
 
 ### Installation:
 
