@@ -1,10 +1,10 @@
 # ONNX model inference using MXNet's Java API
 
-###Recommended:
+### Recommended:
 * Use Python 3.5+ as onnx_chainer requires Python 3.5+
 * Use conda to create a virtual environment for Python
 
-###Installation:
+### Installation:
 
 1. Clone this repo with git clone https://github.com/vandanavk/ONNXinferenceJava.git
 2. Create a conda environment
@@ -27,7 +27,7 @@ pip install onnx_chainer==1.3.3
 ```
 
 
-###Code execution:
+### Code execution:
 
 1. Execute the Python file to convert the Chainer model to an MXNet model
 
