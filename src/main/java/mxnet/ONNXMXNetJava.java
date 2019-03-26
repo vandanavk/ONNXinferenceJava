@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Collections;
 
 public class ONNXMXNetJava {
     @Option(name = "--model-path-prefix", usage = "input model directory and prefix of the model")
@@ -34,7 +35,7 @@ public class ONNXMXNetJava {
             System.exit(1);
         }
 
-        List<Context> inferenceContext = Arrays.asList(Context.cpu());
+        List<Context> inferenceContext = Collections.singletonList(Context.cpu());
 
         Shape inputShape = new Shape(new int[] {1, 3, 224, 224});
 
@@ -49,8 +50,7 @@ public class ONNXMXNetJava {
         nd = NDArray.transpose(nd, new Shape(new int[]{2, 0, 1}), null)[0];
         nd = NDArray.expand_dims(nd, 0, null)[0];
         nd = nd.asType(DType.Float32());
-        List<NDArray> ndList = new ArrayList<>();
-        ndList.add(nd);
+        List<NDArray> ndList = Collections.singletonList(nd);
         List<NDArray> ndResult = predictor.predictWithNDArray(ndList);
         try {
             System.out.println("Prediction for " + inst.inputImagePath);
