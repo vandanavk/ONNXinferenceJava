@@ -6,7 +6,7 @@
 
 ### Installation:
 
-1. Clone this repo with git clone https://github.com/vandanavk/ONNXinferenceJava.git
+1. Clone this repo with `git clone https://github.com/vandanavk/ONNXinferenceJava.git`
 2. Create a conda environment
 
 
@@ -18,7 +18,7 @@ conda create -n mxnet_blog python=3.6
 3. Install dependencies
 
 ```
-pip install mxnet
+pip install mxnet==1.4.0.post0
 pip install chainer==5.3.0
 pip install chainercv==0.12.0
 pip install onnx==1.3.0
@@ -42,7 +42,7 @@ conda activate mxnet_blog
 
 Check model/ folder for 
 ```
-chainer_vgg16.onnx, vgg16-symbol.json, vgg16-0000.params
+chainer_vgg16.onnx, vgg16-symbol.json, vgg16-0000.params, synset.txt
 ```
 
 Check data/ folder for `Penguin.jpg`
