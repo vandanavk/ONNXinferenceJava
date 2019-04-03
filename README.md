@@ -7,7 +7,13 @@
 
 ### Installation:
 
-1. Clone this repo with `git clone https://github.com/vandanavk/ONNXinferenceJava.git`
+1. Clone this repo with 
+
+```
+git clone https://github.com/vandanavk/ONNXinferenceJava.git
+cd ONNXinferenceJava/
+```
+
 2. Create and activate a conda environment
 
 
@@ -41,7 +47,7 @@ brew install maven
 
 For Ubuntu
 
-`sudo apt-get install openjdk-8-java maven`
+`sudo apt-get install openjdk-8-jdk maven`
 
 
 ### Code execution:
