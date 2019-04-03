@@ -76,3 +76,7 @@ Alternatively, open ONNXInferenceJava in an IDE, build the project and run ONNXM
 Deactivate conda environment
 
 `conda deactivate mxnet_blog`
+
+
+#####Tip:
+* If you are unable to activate the conda environment, [try this](https://github.com/conda/conda/issues/7980#issuecomment-441358406)
