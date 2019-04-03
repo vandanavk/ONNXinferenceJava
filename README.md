@@ -18,7 +18,7 @@ conda create -n mxnet_blog python=3.6
 conda activate mxnet_blog
 ```
 
-3. Install dependencies
+3. Install Python dependencies
 
 ```
 pip install mxnet==1.4.0
@@ -28,7 +28,20 @@ pip install onnx==1.3.0
 pip install onnx_chainer==1.3.3
 ```
 
-4. For Java, install the pre-requisites mentioned in [here](https://github.com/apache/incubator-mxnet/blob/master/docs/tutorials/java/mxnet_java_on_intellij.md)
+4. For Java, install the pre-requisites [Reference](https://mxnet.apache.org/versions/master/install/java_setup.html)
+
+For macOS
+
+```
+brew update
+brew tap caskroom/versions
+brew cask install java8
+brew install maven
+```
+
+For Ubuntu
+
+`sudo apt-get install openjdk-8-java maven`
 
 
 ### Code execution:
@@ -44,7 +57,14 @@ chainer_vgg16.onnx, vgg16-symbol.json, vgg16-0000.params, synset.txt
 
 Check data/ folder for `Penguin.jpg`
 
-2. Open ONNXInferenceJava in IntelliJ, build the project and run ONNXMXNetJava.java
+2. Execute the Java file to perform inference
+
+```
+mvn clean dependency:copy-dependencies install
+java -Xmx8G -cp target/ONNXJava-1.0-SNAPSHOT.jar:target/dependency/* mxnet.ONNXMXNetJava --model-path-prefix model/vgg16 --input-image data/Penguin.jpg
+```
+
+Alternatively, open ONNXInferenceJava in an IDE, build the project and run ONNXMXNetJava.java
 
 
 Deactivate conda environment
