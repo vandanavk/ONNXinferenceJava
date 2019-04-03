@@ -5,8 +5,6 @@ import org.apache.mxnet.javaapi.*;
 import org.apache.mxnet.ResourceScope;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,15 +20,13 @@ public class ONNXMXNetJava {
     @Option(name = "--input-image", usage = "the input image")
     private String inputImagePath = System.getProperty("user.dir") + "/data/Penguin.jpg";
 
-    final static Logger logger = LoggerFactory.getLogger(ONNXMXNetJava.class);
-
     public static void main(String[] args) {
         ONNXMXNetJava inst = new ONNXMXNetJava();
         CmdLineParser parser  = new CmdLineParser(inst);
         try {
             parser.parseArgument(args);
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            e.printStackTrace();
             parser.printUsage(System.err);
             System.exit(1);
         }
