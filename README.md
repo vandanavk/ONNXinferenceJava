@@ -23,6 +23,7 @@ conda create -n mxnet_blog python=3.6
 
 conda activate mxnet_blog
 ```
+**Tip:** If you are unable to activate the conda environment, [try this](https://github.com/conda/conda/issues/7980#issuecomment-441358406)
 
 3. Install Python dependencies
 
@@ -78,5 +79,3 @@ Deactivate conda environment
 `conda deactivate mxnet_blog`
 
 
-##### Tip:
-* If you are unable to activate the conda environment, [try this](https://github.com/conda/conda/issues/7980#issuecomment-441358406)
